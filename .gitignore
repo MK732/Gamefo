@@ -65,3 +65,5 @@ lib64/
 # Hidden venv folder and files
 gamefo/
 gamefo/**
+
+.ps1
