@@ -3,8 +3,6 @@ from app.db_connection import connect_db
 
 router = APIRouter()
 
-
-
 # GET games by genre and name
 @router.get("/action", tags=["Genres"])
 def get_game_by_genre_action():
@@ -103,8 +101,6 @@ def get_game_by_genre_adventure():
         cur.close()
         conn.close()
         
-
-
 @router.get("/shooter", tags=["Genres"])
 def get_game_by_genre_shooter():
 

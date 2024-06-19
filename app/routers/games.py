@@ -13,7 +13,7 @@ def get_game_many_by_query(query: str):
         
     # If connection fails, return an error message
     except:
-        return {"Error" : "Connection to database failed!"}
+        raise Exception("Connection to database failed!")
 
     # Try to get the games that have a name similar to the query
     try:
@@ -28,7 +28,7 @@ def get_game_many_by_query(query: str):
         
         # If no games are found, return an error message
         if not result:
-            return {"Error" : "No Games Found!"}
+            raise Exception("No Games Found!")
         return {"game_info": result}
     
     # If an error occurs, return the error message
