@@ -4,7 +4,7 @@ from app.db_connection import connect_db
 router = APIRouter()
 
 # GET request to get games "LIKE" user query
-@router.get("/game_name/{query}", tags=["Games"])
+@router.get("/game_name/{game_name}", tags=["Games"])
 def get_game_many_by_query(query: str):
     search_query = f"%{query}%"  
     # Connect to the database
@@ -34,6 +34,37 @@ def get_game_many_by_query(query: str):
     # If an error occurs, return the error message
     except Exception as e:
         return {"Error" : str(e)}
+    
+@router.get("/games", tags=["Games"])
+def get_all_games():
+  
+    # Connect to the database
+    try: 
+        conn,cur = connect_db()
+        
+    # If connection fails, return an error message
+    except:
+        return {"Error" : "Connection to database failed!"}
+
+    # Try to get the games that have a name similar to the query
+    try:
+     
+        sql_query = "SELECT * FROM api.game_info order by game_title ASC"
+    
+        cur.execute(sql_query)
+        conn.commit()
+        result = cur.fetchall() 
+        
+        # If no games are found, return an error message
+        if not result:
+            return {"Error" : "No Games Found!"}
+        return {"game_info": result}
+    
+    # If an error occurs, return the error message
+    except Exception as e:
+        return {"Error" : str(e)}
+
+    
 
 ### GET request for games by name and genre, seems redundant
 ### Will keep it here for now, but may remove it later
