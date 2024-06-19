@@ -79,6 +79,32 @@ def get_game_by_genre_fps():
         cur.close()
         conn.close()
 
+@router.get("/adventure", tags=["Genres"])
+def get_game_by_genre_adventure():
+
+    try:
+        conn,cur = connect_db()
+    except:
+        raise HTTPException(status_code=500, detail="Connection to database failed!")
+    
+    try:
+        sql_query = "select * from api.game_info where genre ILIKE '%adv%' order by game_title ASC"
+        cur.execute(sql_query)
+        conn.commit()
+        result = cur.fetchall()
+            
+        if not result:
+           raise HTTPException(status_code=404, detail="No Games Found!")
+        return {"game_info": result}
+        
+    except:
+       raise HTTPException(status_code=500, detail="An error occurred!")
+    finally:
+        cur.close()
+        conn.close()
+        
+
+
 @router.get("/shooter", tags=["Genres"])
 def get_game_by_genre_shooter():
 
@@ -127,7 +153,30 @@ def get_game_by_genre_sports():
     finally:
         cur.close()
         conn.close()
+    
+@router.get("/fighting", tags=["Genres"])
+def get_game_by_genre_fighting():
+
+    try:
+        conn,cur = connect_db()
+    except:
+        raise HTTPException(status_code=500, detail="Connection to database failed!")
+    
+    try:
+        sql_query = "select * from api.game_info where genre ILIKE '%fight%' order by game_title ASC"
+        cur.execute(sql_query)
+        conn.commit()
+        result = cur.fetchall()
+            
+        if not result:
+           raise HTTPException(status_code=404, detail="No Games Found!")
+        return {"game_info": result}
         
+    except:
+       raise HTTPException(status_code=500, detail="An error occurred!")
+    finally:
+        cur.close()
+        conn.close()
 
 @router.get("/survival", tags=["Genres"])
 def get_game_by_genre_survival():
@@ -225,26 +274,3 @@ def get_game_by_genre_simulation():
         cur.close()
         conn.close()
         
-@router.get("/fighting", tags=["Genres"])
-def get_game_by_genre_fighting():
-
-    try:
-        conn,cur = connect_db()
-    except:
-        raise HTTPException(status_code=500, detail="Connection to database failed!")
-    
-    try:
-        sql_query = "select * from api.game_info where genre ILIKE '%fight%' order by game_title ASC"
-        cur.execute(sql_query)
-        conn.commit()
-        result = cur.fetchall()
-            
-        if not result:
-           raise HTTPException(status_code=404, detail="No Games Found!")
-        return {"game_info": result}
-        
-    except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
-    finally:
-        cur.close()
-        conn.close()
