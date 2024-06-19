@@ -7,8 +7,8 @@ router = APIRouter()
 
 
 
-@router.get("/publishers", tags=["Publishers"])
-def get_games_by_publisher():
+@router.get("/developers", tags=["Developers"])
+def get_games_by_developers():
 
     try:
         conn,cur = connect_db()
