@@ -34,7 +34,10 @@ def get_game_many_by_query(query: str):
     # If an error occurs, return the error message
     except Exception as e:
         return {"Error" : str(e)}
-    
+
+### GET request for games by name and genre, seems redundant
+### Will keep it here for now, but may remove it later
+
 # # GET games by genre and name
 # @router.get("/gamefo/action/{query}", tags=["games"])
 # def get_game_by_action_and_name(query: str):
