@@ -16,7 +16,7 @@ def get_games_by_developers():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info GROUP BY publisher ORDER BY publisher ASC"
+        sql_query = "SELECT developer, ARRAY_AGG(game_title) AS games FROM api.game_info GROUP BY developer ORDER BY developer ASC"
         cur.execute(sql_query)
         conn.commit()
         result = cur.fetchall()
