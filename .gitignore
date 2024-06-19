@@ -59,11 +59,10 @@ env/
 lib/
 lib64/
 
+*.ps1
 
 .env
 
 # Hidden venv folder and files
 gamefo/
 gamefo/**
-
-.ps1
