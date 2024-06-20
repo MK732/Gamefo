@@ -1,13 +1,12 @@
+from typing import List
 from fastapi import APIRouter,HTTPException,Path
 from app.db_connection import connect_db
+from app.models.games_model import Game
 
 router = APIRouter()
 
-
-
-
 # GET request to get games "LIKE" user query
-@router.get("/game_name/{game_name}", tags=["Games"])
+@router.get("/game_name/{game_name}", tags=["Games",], response_model=List[Game])
 def get_game_many_by_query(game_title: str):
     search_query = f"%{game_title}%"  
     # Connect to the database
@@ -27,11 +26,11 @@ def get_game_many_by_query(game_title: str):
             params = (search_query,)
             cur.execute(sql_query, params)
             result = cur.fetchall() 
-        
+            games = []
         # If no games are found, return an error message
         if not result:
             raise Exception("No Games Found!")
-        return {"game_info": result}
+        return result
     
     # If an error occurs, return the error message
     except Exception as e:
@@ -40,7 +39,7 @@ def get_game_many_by_query(game_title: str):
         cur.close()
         conn.close()
     
-@router.get("/games", tags=["Games"])
+@router.get("/games", tags=["Games"], response_model=List[Game])
 def get_all_games():
   
     # Connect to the database
