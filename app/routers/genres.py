@@ -96,7 +96,7 @@ def get_game_by_genre_adventure():
     finally:
         cur.close()
         conn.close()
-        
+
 @router.get("/shooter", tags=["Genres"])
 def get_game_by_genre_shooter():
 
