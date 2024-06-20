@@ -1,12 +1,15 @@
-from fastapi import APIRouter,HTTPException
+from fastapi import APIRouter,HTTPException,Path
 from app.db_connection import connect_db
 
 router = APIRouter()
 
+
+
+
 # GET request to get games "LIKE" user query
 @router.get("/game_name/{game_name}", tags=["Games"])
-def get_game_many_by_query(query: str):
-    search_query = f"%{query}%"  
+def get_game_many_by_query(game_title: str):
+    search_query = f"%{game_title}%"  
     # Connect to the database
     try: 
         conn,cur = connect_db()
@@ -17,7 +20,7 @@ def get_game_many_by_query(query: str):
 
     # Try to get the games that have a name similar to the query
     try:
-        if len(query) < 3 :
+        if len(game_title) < 3 :
             raise Exception("Query must be at least 3 characters long!")
         else:
             sql_query = "SELECT * FROM api.game_info WHERE game_title ILIKE %s order by game_title ASC"
