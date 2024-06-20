@@ -22,7 +22,7 @@ def get_game_by_genre_action():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -46,7 +46,7 @@ def get_game_by_genre_rpg():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -69,7 +69,7 @@ def get_game_by_genre_fps():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -92,7 +92,7 @@ def get_game_by_genre_adventure():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -115,7 +115,7 @@ def get_game_by_genre_shooter():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -139,7 +139,7 @@ def get_game_by_genre_sports():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -162,7 +162,7 @@ def get_game_by_genre_fighting():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -185,7 +185,7 @@ def get_game_by_genre_survival():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -208,7 +208,7 @@ def get_game_by_genre_racing():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -231,7 +231,7 @@ def get_game_by_genre_puzzle():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -254,7 +254,7 @@ def get_game_by_genre_simulation():
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Games Found!")
     finally:
         cur.close()
         conn.close()
