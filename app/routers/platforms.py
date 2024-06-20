@@ -1,10 +1,12 @@
+from typing import List
 from fastapi import APIRouter,HTTPException
 from app.db_connection import connect_db
+from app.models.games_model import Game
 
 router = APIRouter()
 
 
-@router.get("/platforms/{platform}", tags=["Platforms"])
+@router.get("/platforms/{platform}", tags=["Platforms"], response_model=List[Game] )
 def get_games_by_platforms(platform: str):
     
     # Connect to the database
@@ -26,7 +28,7 @@ def get_games_by_platforms(platform: str):
         # If no games are found, return an error message
         if not result:
             raise Exception("No Games Found!")
-        return {"game_info": result}
+        return result
     
     # If an error occurs, return the error message
     except Exception as e:

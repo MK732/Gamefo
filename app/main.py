@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import FastAPI
 from app.routers import games, genres, publishers, developers, platforms, release_dates
 from dotenv import load_dotenv
@@ -6,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path="/code/app/.env")
 
 # Create a FastAPI instance
-app = FastAPI(swagger_ui_parameters={"displayRequestDuration": True, "syntaxHighlight.activated" : False, "syntaxHighlight.theme" : "nord" },
+app = FastAPI(swagger_ui_parameters={"displayRequestDuration": True, "syntaxHighlight.activated" : False },
               
               title="GameFo API",
               description="An API to get information about games, genres, publishers, developers, and platforms.",
