@@ -23,7 +23,6 @@ def get_game_many_by_query(query: str):
             sql_query = "SELECT * FROM api.game_info WHERE game_title ILIKE %s order by game_title ASC"
             params = (search_query,)
             cur.execute(sql_query, params)
-            conn.commit()
             result = cur.fetchall() 
         
         # If no games are found, return an error message
@@ -34,6 +33,8 @@ def get_game_many_by_query(query: str):
     # If an error occurs, return the error message
     except Exception as e:
         return {"Error" : str(e)}
+    finally:
+        conn.close()
     
 @router.get("/games", tags=["Games"])
 def get_all_games():
@@ -52,7 +53,6 @@ def get_all_games():
         sql_query = "SELECT * FROM api.game_info order by game_title ASC"
     
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall() 
         
         # If no games are found, return an error message
@@ -63,7 +63,8 @@ def get_all_games():
     # If an error occurs, return the error message
     except Exception as e:
         return {"Error" : str(e)}
-
+    finally:
+        conn.close()
     
 
 ### GET request for games by name and genre, seems redundant
