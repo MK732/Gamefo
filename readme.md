@@ -15,19 +15,6 @@ If a game is missing, you can request to add it by submitting this form here: [f
 
 Below is an overview of the files and directories in this project, excluding the `.env` file for security reasons.
 
-├── routers
-│ ├── init.py
-│ ├── developers.py
-│ ├── games.py
-│ ├── genres.py
-│ ├── platforms.py
-│ ├── publishers.py
-│ ├── release_dates.py
-├── db_connection.py
-├── main.py
-
-
-
 ### Files and Directories
 
 - **routers/**: Contains the different route modules for the API.
