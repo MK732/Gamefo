@@ -1,5 +1,7 @@
+from typing import List
 from fastapi import APIRouter,HTTPException
 from app.db_connection import connect_db
+from app.models.developers_model import Developer
 
 router = APIRouter()
 
@@ -7,7 +9,7 @@ router = APIRouter()
 
 
 
-@router.get("/developers", tags=["Developers"])
+@router.get("/developers", tags=["Developers"], response_model=List[Developer])
 def get_games_by_developers():
 
     try:
@@ -23,7 +25,7 @@ def get_games_by_developers():
             
         if not result:
            raise HTTPException(status_code=404, detail="No Games Found!")
-        return {"game_info": result}
+        return result
         
     except:
        raise HTTPException(status_code=500, detail="An error occurred!")
@@ -31,7 +33,7 @@ def get_games_by_developers():
         cur.close()
         conn.close()
         
-@router.get("/developers/{name}", tags=["Developers"])
+@router.get("/developers/{name}", tags=["Developers"], response_model=List[Developer])
 def get_games_by_developers_name(name: str):
     search_query = f"%{name}%"
     
@@ -52,7 +54,7 @@ def get_games_by_developers_name(name: str):
         if not result:
            raise HTTPException(status_code=404, detail="No Developers Found!")
        
-        return {"game_info": result}
+        return result
         
     except:
        raise HTTPException(status_code=500, detail="No Developers Found!")
