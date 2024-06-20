@@ -18,7 +18,6 @@ def get_games_by_publisher():
     try:
         sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info GROUP BY publisher ORDER BY publisher ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:

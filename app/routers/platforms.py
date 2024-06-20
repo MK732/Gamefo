@@ -21,7 +21,6 @@ def get_games_by_platforms(platform: str):
         sql_query = "SELECT * FROM api.game_info WHERE %s ILIKE ANY(platforms) order by game_title ASC"
         params = (platform)
         cur.execute(sql_query, (platform,))
-        conn.commit()
         result = cur.fetchall() 
         
         # If no games are found, return an error message

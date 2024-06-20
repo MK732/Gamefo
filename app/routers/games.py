@@ -34,6 +34,7 @@ def get_game_many_by_query(query: str):
     except Exception as e:
         return {"Error" : str(e)}
     finally:
+        cur.close()
         conn.close()
     
 @router.get("/games", tags=["Games"])
@@ -64,6 +65,7 @@ def get_all_games():
     except Exception as e:
         return {"Error" : str(e)}
     finally:
+        cur.close()
         conn.close()
     
 

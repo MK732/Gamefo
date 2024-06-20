@@ -15,7 +15,6 @@ def get_game_by_genre_action():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%action%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -40,7 +39,6 @@ def get_game_by_genre_rpg():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%fps%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -64,7 +62,6 @@ def get_game_by_genre_fps():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%rpg%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -88,7 +85,6 @@ def get_game_by_genre_adventure():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%adv%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -112,7 +108,6 @@ def get_game_by_genre_shooter():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%shoot%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -137,7 +132,6 @@ def get_game_by_genre_sports():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%sport%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -161,7 +155,6 @@ def get_game_by_genre_fighting():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%fight%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -185,7 +178,6 @@ def get_game_by_genre_survival():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%surv%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -209,7 +201,6 @@ def get_game_by_genre_racing():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%rac%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -233,7 +224,6 @@ def get_game_by_genre_puzzle():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%puzz%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
@@ -257,7 +247,6 @@ def get_game_by_genre_simulation():
     try:
         sql_query = "select * from api.game_info where genre ILIKE '%sim%' order by game_title ASC"
         cur.execute(sql_query)
-        conn.commit()
         result = cur.fetchall()
             
         if not result:
