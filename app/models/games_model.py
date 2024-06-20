@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from fastapi import FastAPI
 from typing import List
 
 class Game(BaseModel):

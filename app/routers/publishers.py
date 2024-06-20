@@ -1,5 +1,7 @@
+from typing import List
 from fastapi import APIRouter,HTTPException
 from app.db_connection import connect_db
+from app.models.publisher_model import Publisher
 
 router = APIRouter()
 
@@ -7,7 +9,7 @@ router = APIRouter()
 
 
 
-@router.get("/publishers", tags=["Publishers"])
+@router.get("/publishers", tags=["Publishers"], response_model=List[Publisher])
 def get_games_by_publisher():
 
     try:
@@ -22,7 +24,8 @@ def get_games_by_publisher():
             
         if not result:
            raise HTTPException(status_code=404, detail="No Publishers Found!")
-        return {"game_info": result}
+       
+        return result
         
     except:
        raise HTTPException(status_code=500, detail="No Publishers Found!")
@@ -30,7 +33,7 @@ def get_games_by_publisher():
         cur.close()
         conn.close()
         
-@router.get("/publishers/{name}", tags=["Publishers"])
+@router.get("/publishers/{name}", tags=["Publishers"], response_model=List[Publisher])
 def get_games_by_publisher_name(name:str):
     search_query = f"%{name}%"
     
@@ -45,7 +48,7 @@ def get_games_by_publisher_name(name:str):
         sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE %s GROUP BY publisher ORDER BY publisher ASC"
         cur.execute(sql_query, (search_query,))
         result = cur.fetchall()
-        return {"game_info": result}
+        return result 
     except:
         raise HTTPException(status_code=404, detail="No Publishers Found!")
         
