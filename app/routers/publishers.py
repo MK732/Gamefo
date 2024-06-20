@@ -21,11 +21,11 @@ def get_games_by_publisher():
         result = cur.fetchall()
             
         if not result:
-           raise HTTPException(status_code=404, detail="No Games Found!")
+           raise HTTPException(status_code=404, detail="No Publishers Found!")
         return {"game_info": result}
         
     except:
-       raise HTTPException(status_code=500, detail="An error occurred!")
+       raise HTTPException(status_code=500, detail="No Publishers Found!")
     finally:
         cur.close()
         conn.close()
@@ -33,25 +33,25 @@ def get_games_by_publisher():
 @router.get("/publishers/{name}", tags=["Publishers"])
 def get_games_by_publisher_name(name:str):
     search_query = f"%{name}%"
+    
+    if len(name) < 3 :
+            raise HTTPException(status_code=404,detail="Query must be at least 3 characters long!")
     try:
         conn,cur = connect_db()
     except:
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        if len(name) < 3 :
-            raise Exception("Query must be at least 3 characters long!")
-        else:
-            sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE %s GROUP BY publisher ORDER BY publisher ASC"
-            cur.execute(sql_query, (search_query,))
-            result = cur.fetchall()
-            
-        if not result:
-           raise HTTPException(status_code=404, detail="No Games Found!")
+        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE %s GROUP BY publisher ORDER BY publisher ASC"
+        cur.execute(sql_query, (search_query,))
+        result = cur.fetchall()
         return {"game_info": result}
-        
     except:
-       raise HTTPException(status_code=500, detail="No Games Found!")
+        raise HTTPException(status_code=404, detail="No Publishers Found!")
+        
+      
+        
+    
     finally:
         cur.close()
         conn.close()
