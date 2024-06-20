@@ -1,3 +1,5 @@
+import logging
+from fastapi import HTTPException
 import psycopg2
 import os
 from psycopg2.extras import RealDictCursor
@@ -16,12 +18,16 @@ def connect():
     return conn
 
 # Function to create a cursor
-def cursor():
-    conn = connect()
-    # Cursor factory is used to return the result in a dictionary format  
-    return conn.cursor(cursor_factory=RealDictCursor) 
+# def cursor():
+#     conn = connect()
+#     # Cursor factory is used to return the result in a dictionary format  
+#     return conn.cursor(cursor_factory=RealDictCursor) 
 
 def connect_db():
-    conn = connect()
-    cur = cursor()
-    return conn, cur
+    try:
+        conn = connect()
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        return conn, cur
+    except Exception as e:
+        logging.error(f"Failed to connect to the database: {e}")
+        raise HTTPException(status_code=500, detail="Connection to database failed!")

@@ -5,11 +5,16 @@ from app.models.games_model import Game
 
 router = APIRouter()
 
+
+
+
 # GET request to get games "LIKE" user query
-@router.get("/game_name/{game_name}", tags=["Games",], response_model=List[Game])
+@router.get("/game_name/{game_name}", tags=["Games"], response_model=List[Game])
 def get_game_many_by_query(game_title: str):
     search_query = f"%{game_title}%"  
     # Connect to the database
+    if len(game_title) < 3 :
+        raise HTTPException(status_code=400, detail="Query must be at least 3 characters long!")
     try: 
         conn,cur = connect_db()
         
@@ -18,22 +23,20 @@ def get_game_many_by_query(game_title: str):
         raise Exception("Connection to database failed!")
 
     # Try to get the games that have a name similar to the query
+    
     try:
-        if len(game_title) < 3 :
-            raise Exception("Query must be at least 3 characters long!")
-        else:
-            sql_query = "SELECT * FROM api.game_info WHERE game_title ILIKE %s order by game_title ASC"
-            params = (search_query,)
-            cur.execute(sql_query, params)
-            result = cur.fetchall() 
-            games = []
+        sql_query = "SELECT * FROM api.game_info WHERE game_title ILIKE %s order by game_title ASC"
+        params = (search_query,)
+        cur.execute(sql_query, params)
+        result = cur.fetchall() 
+        
         # If no games are found, return an error message
         if not result:
-            raise Exception("No Games Found!")
+            raise HTTPException(status_code=404, detail="No Games Found!")
         return result
     
     # If an error occurs, return the error message
-    except Exception as e:
+    except HTTPException as e:
         return {"Error" : str(e)}
     finally:
         cur.close()
@@ -48,8 +51,7 @@ def get_all_games():
         
     # If connection fails, return an error message
     except:
-        return {"Error" : "Connection to database failed!"}
-
+        raise HTTPException(status_code=500, detail="Connection to database failed!")
     # Try to get the games that have a name similar to the query
     try:
      
@@ -57,15 +59,16 @@ def get_all_games():
     
         cur.execute(sql_query)
         result = cur.fetchall() 
-        
+         
         # If no games are found, return an error message
         if not result:
-            return {"Error" : "No Games Found!"}
-        return {"game_info": result}
+            raise HTTPException(status_code=404, detail="No Games Found!")
+        print(result)
+        return result
     
     # If an error occurs, return the error message
-    except Exception as e:
-        return {"Error" : str(e)}
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"Error has occured: {str(e)}")
     finally:
         cur.close()
         conn.close()
