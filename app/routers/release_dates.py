@@ -12,7 +12,7 @@ def get_all_games_by_release_date():
         
     # If connection fails, return an error message
     except:
-        return {"Error" : "Connection to database failed!"}
+        raise HTTPException(status_code=500, detail="Connection to database failed!") 
 
     # Try to get the games that have a name similar to the query
     try:
@@ -23,12 +23,12 @@ def get_all_games_by_release_date():
         
         # If no games are found, return an error message
         if not result:
-            return {"Error" : "No Games Found!"}
+            raise HTTPException(status_code=404, detail="No Games Found!")
         return {"game_info": result}
     
     # If an error occurs, return the error message
     except Exception as e:
-        return {"Error" : str(e)}
+        raise HTTPException(status_code=500, detail="Error has occured")
     finally:
         cur.close()
         conn.close()
@@ -41,7 +41,7 @@ def get_game_by_release_date_by_year(year: str):
         
     # If connection fails, return an error message
     except:
-        return {"Error" : "Connection to database failed!"}
+        raise HTTPException(status_code=500, detail="Connection to database failed!") 
 
     # Try to get the games that have a name similar to the query
     try:
@@ -53,12 +53,12 @@ def get_game_by_release_date_by_year(year: str):
         
         # If no games are found, return an error message
         if not result:
-            return {"Error" : "No Games Found!"}
+            raise HTTPException(status_code=404, detail="No Games Found!")
         return {"game_info": result}
     
     # If an error occurs, return the error message
     except Exception as e:
-        return {"Error" : str(e)}
+        raise HTTPException(status_code=500, detail=" No Games Found!")
     finally:
         cur.close()
         conn.close()
@@ -73,7 +73,7 @@ def get_game_by_release_date_by_range(year1: str, year2: str):
         
     # If connection fails, return an error message
     except:
-        return {"Error" : "Connection to database failed!"}
+        raise HTTPException(status_code=500, detail="Connection to database failed!") 
 
     # Try to get the games that have a name similar to the query
     try:
@@ -85,7 +85,7 @@ def get_game_by_release_date_by_range(year1: str, year2: str):
         
         # If no games are found, return an error message
         if not result:
-            return {"Error" : "No Games Found!"}
+             raise HTTPException(status_code=500, detail="No Games Found!")
         return {"game_info": result}
     
     # If an error occurs, return the error message
