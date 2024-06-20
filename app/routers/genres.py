@@ -6,7 +6,7 @@ from app.models.games_model import Game
 router = APIRouter()
 
 # GET games by genre and name
-@router.get("/action", tags=["Genres"],response_model=List[Game])
+@router.get("/action", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_action():
 
     try:
@@ -30,7 +30,7 @@ def get_game_by_genre_action():
         conn.close()
         
 # GET games by genre and name
-@router.get("/fps", tags=["Genres"],response_model=List[Game])
+@router.get("/fps", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_rpg():
 
     try:
@@ -53,7 +53,7 @@ def get_game_by_genre_rpg():
         cur.close()
         conn.close()
         
-@router.get("/rpg", tags=["Genres"],response_model=List[Game])
+@router.get("/rpg", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_fps():
 
     try:
@@ -76,7 +76,7 @@ def get_game_by_genre_fps():
         cur.close()
         conn.close()
 
-@router.get("/adventure", tags=["Genres"],response_model=List[Game])
+@router.get("/adventure", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_adventure():
 
     try:
@@ -99,7 +99,7 @@ def get_game_by_genre_adventure():
         cur.close()
         conn.close()
 
-@router.get("/shooter", tags=["Genres"],response_model=List[Game])
+@router.get("/shooter", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_shooter():
 
     try:
@@ -123,7 +123,7 @@ def get_game_by_genre_shooter():
         conn.close()
 
 
-@router.get("/sports", tags=["Genres"],response_model=List[Game])
+@router.get("/sports", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_sports():
 
     try:
@@ -146,7 +146,7 @@ def get_game_by_genre_sports():
         cur.close()
         conn.close()
     
-@router.get("/fighting", tags=["Genres"],response_model=List[Game])
+@router.get("/fighting", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_fighting():
 
     try:
@@ -169,7 +169,7 @@ def get_game_by_genre_fighting():
         cur.close()
         conn.close()
 
-@router.get("/survival", tags=["Genres"],response_model=List[Game])
+@router.get("/survival", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_survival():
 
     try:
@@ -192,7 +192,7 @@ def get_game_by_genre_survival():
         cur.close()
         conn.close()
 
-@router.get("/racing", tags=["Genres"],response_model=List[Game])
+@router.get("/racing", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_racing():
 
     try:
@@ -215,7 +215,7 @@ def get_game_by_genre_racing():
         cur.close()
         conn.close()
         
-@router.get("/puzzle", tags=["Genres"],response_model=List[Game])
+@router.get("/puzzle", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_puzzle():
 
     try:
@@ -238,7 +238,7 @@ def get_game_by_genre_puzzle():
         cur.close()
         conn.close()
 
-@router.get("/simulation", tags=["Genres"],response_model=List[Game])
+@router.get("/simulation", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_simulation():
 
     try:
