@@ -78,21 +78,21 @@ Below is an overview of the files and directories in this project, excluding the
 
 ### Games
 
-- **GET /game_name/{game_name}**: Retrieve games with a name similar to the specified query.
+- **GET /games/{game_name}**: Retrieve games with a name similar to the specified query.
 - **GET /games**: Retrieve all games.
 ### Genres
 
-- **GET /action**: Retrieve games in the action genre.
-- **GET /fps**: Retrieve games in the first-person shooter (FPS) genre.
-- **GET /rpg**: Retrieve games in the role-playing game (RPG) genre.
-- **GET /adventure**: Retrieve games in the adventure genre.
-- **GET /shooter**: Retrieve games in the shooter genre.
-- **GET /sports**: Retrieve games in the sports genre.
-- **GET /fighting**: Retrieve games in the fighting genre.
-- **GET /survival**: Retrieve games in the survival genre.
-- **GET /racing**: Retrieve games in the racing genre.
-- **GET /puzzle**: Retrieve games in the puzzle genre.
-- **GET /simulation**: Retrieve games in the simulation genre.
+- **GET /genre/action**: Retrieve games in the action genre.
+- **GET /genre/fps**: Retrieve games in the first-person shooter (FPS) genre.
+- **GET /genre/rpg**: Retrieve games in the role-playing game (RPG) genre.
+- **GET /genre/adventure**: Retrieve games in the adventure genre.
+- **GET /genre/shooter**: Retrieve games in the shooter genre.
+- **GET /genre/sports**: Retrieve games in the sports genre.
+- **GET /genre/fighting**: Retrieve games in the fighting genre.
+- **GET /genre/survival**: Retrieve games in the survival genre.
+- **GET /genre/racing**: Retrieve games in the racing genre.
+- **GET /genre/puzzle**: Retrieve games in the puzzle genre.
+- **GET /genre/simulation**: Retrieve games in the simulation genre.
 
 
 ### Platforms
