@@ -29,7 +29,7 @@ def get_game_by_genre_action():
         cur.close()
         conn.close()
         
-# GET games by genre and name
+
 @router.get("/genre/fps", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_rpg():
 
@@ -52,7 +52,7 @@ def get_game_by_genre_rpg():
     finally:
         cur.close()
         conn.close()
-        
+
 @router.get("/genre/rpg", tags=["Genres"], response_model=List[Game])
 def get_game_by_genre_fps():
 
