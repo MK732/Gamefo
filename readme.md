@@ -63,6 +63,7 @@ Below is an overview of the files and directories in this project, excluding the
    POSTGRES_PASSWORD=password
    POSTGRES_DATABASE=db
    ```
+5. Import Sample_dataset.csv into db
 # Running the application
 1. Start the FastAPI server:
     ```bash
@@ -94,7 +95,6 @@ Below is an overview of the files and directories in this project, excluding the
 - **GET /genre/puzzle**: Retrieve games in the puzzle genre.
 - **GET /genre/simulation**: Retrieve games in the simulation genre.
 
-
 ### Platforms
 
 - **GET /platforms/{platform}**: Retrieve games available on a specific platform.
@@ -102,8 +102,6 @@ Below is an overview of the files and directories in this project, excluding the
 ### Publishers
 
 - **GET /publishers**: Retrieve a list of publishers and their associated games.
-
-
 
 
 ### Developers
