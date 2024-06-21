@@ -8,7 +8,7 @@ GameFo is an open-source API dedicated to video games, offering access to a comp
 If you would like to contribute to this project, please fork the repository and create a pull request with your changes. We welcome all contributions that improve the functionality and usability of GameFo. 
 
 ### Missing Games
-If a game is missing, you can request to add it by submitting this form here: [form not made yet]. Once approved it will be added to the database.
+If a game is missing, you can request to add it by submitting this form here: [FORM](https://docs.google.com/forms/d/e/1FAIpQLSfHOAAvBX4ze0k-e3X5LEgwb_TQwgeK_BovzFyIUGQXzK7NPw/viewform?usp=sf_link). Once approved it will be added to the database.
 
 
 ## Project Structure
