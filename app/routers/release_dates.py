@@ -1,5 +1,6 @@
 from fastapi import APIRouter,HTTPException
-from app.db_connection import connect_db, fetch_as_dict
+from app.db_connection import connect_db
+from app.utils.fetch_as_dictionary import fetch_as_dict
 
 router = APIRouter()
 
