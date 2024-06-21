@@ -2,6 +2,7 @@ from typing import List
 from fastapi import APIRouter,HTTPException
 from app.db_connection import connect_db
 from app.models.publisher_model import Publisher
+from app.utils.fetch_as_dictionary import fetch_as_dict
 
 router = APIRouter()
 
@@ -10,17 +11,16 @@ router = APIRouter()
 
 
 @router.get("/publishers", tags=["Publishers"], response_model=List[Publisher])
-def get_games_by_publisher():
+async def get_games_by_publisher():
 
     try:
-        conn,cur = connect_db()
+        conn = await connect_db()
     except:
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
         sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info GROUP BY publisher ORDER BY publisher ASC"
-        cur.execute(sql_query)
-        result = cur.fetchall()
+        result = await fetch_as_dict(conn,sql_query)
             
         if not result:
            raise HTTPException(status_code=404, detail="No Publishers Found!")
@@ -30,31 +30,25 @@ def get_games_by_publisher():
     except:
        raise HTTPException(status_code=500, detail="No Publishers Found!")
     finally:
-        cur.close()
-        conn.close()
+        await conn.close()
         
 @router.get("/publishers/{name}", tags=["Publishers"], response_model=List[Publisher])
-def get_games_by_publisher_name(name:str):
+async def get_games_by_publisher_name(name:str):
     search_query = f"%{name}%"
     
     if len(name) < 3 :
             raise HTTPException(status_code=404,detail="Query must be at least 3 characters long!")
     try:
-        conn,cur = connect_db()
+        conn = await connect_db()
     except:
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE %s GROUP BY publisher ORDER BY publisher ASC"
-        cur.execute(sql_query, (search_query,))
-        result = cur.fetchall()
+        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE $1 GROUP BY publisher ORDER BY publisher ASC"
+        result = await fetch_as_dict(conn,sql_query, search_query)
+        
         return result 
     except:
         raise HTTPException(status_code=404, detail="No Publishers Found!")
-        
-      
-        
-    
     finally:
-        cur.close()
-        conn.close()
+        await conn.close()
