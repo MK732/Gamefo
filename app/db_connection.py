@@ -20,7 +20,7 @@ async def connect():
     )
     return conn
 
-# Function to get connection and cursor (if needed)
+# Function to get connection to the database
 async def connect_db():
     conn = await connect()
     try:

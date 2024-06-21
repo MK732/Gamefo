@@ -16,7 +16,12 @@ async def get_game_by_genre_action():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = "select * from api.game_info where genre ILIKE '%action%' order by game_title ASC"
+        sql_query = """
+        SELECT id, game_title, release_date, publisher, developer, genre, platforms 
+        FROM api.game_info 
+        WHERE genre ILIKE '%action%' 
+        ORDER BY game_title ASC
+        """
         result = await fetch_as_dict(conn, sql_query)
          
             
