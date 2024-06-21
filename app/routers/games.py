@@ -9,7 +9,7 @@ router = APIRouter()
 
 
 # GET request to get games "LIKE" user query
-@router.get("/game_name/{game_name}", tags=["Games"], response_model=List[Game])
+@router.get("/games/{game_name}", tags=["Games"], response_model=List[Game])
 def get_game_many_by_query(game_title: str):
     search_query = f"%{game_title}%"  
     # Connect to the database
