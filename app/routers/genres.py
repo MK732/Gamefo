@@ -17,10 +17,15 @@ async def get_game_by_genre_action():
     
     try:
         sql_query = """
-        SELECT id, game_title, release_date, publisher, developer, genre, platforms 
-        FROM api.game_info 
-        WHERE genre ILIKE '%action%' 
-        ORDER BY game_title ASC
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
+                        FROM 
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%action%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
         """
         result = await fetch_as_dict(conn, sql_query)
          
@@ -45,10 +50,17 @@ async def get_game_by_genre_rpg():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%fps%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%fps%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
         
             
@@ -71,10 +83,17 @@ async def get_game_by_genre_fps():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%rpg%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%rpg%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -96,10 +115,17 @@ async def get_game_by_genre_adventure():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE  '%adv%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%adv%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -121,10 +147,17 @@ async def get_game_by_genre_shooter():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%shoot%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%shoot%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn,sql_query)
             
         if not result:
@@ -147,10 +180,17 @@ async def get_game_by_genre_sports():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%sport%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%sport%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -172,10 +212,17 @@ async def get_game_by_genre_fighting():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query ="""
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%fight%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%fight%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -197,10 +244,17 @@ async def get_game_by_genre_survival():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%surv%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%surv%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -222,10 +276,17 @@ async def get_game_by_genre_racing():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query ="""SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query ="""
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%rac%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%rac%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -247,10 +308,17 @@ async def get_game_by_genre_puzzle():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%puzz%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%puzz%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
@@ -272,10 +340,17 @@ async def get_game_by_genre_simulation():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = """SELECT
-                            id, game_title, release_date, publisher, developer, genre, platforms
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
                         FROM 
-                            api.game_info where genre ILIKE '%sim%' order by game_title ASC"""
+                            api.game_info 
+                        WHERE 
+                            genre ILIKE '%sim%' 
+                        ORDER BY 
+                            game_title 
+                        ASC;
+        """
         result = await fetch_as_dict(conn, sql_query)
             
         if not result:
