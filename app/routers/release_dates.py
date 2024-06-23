@@ -18,7 +18,15 @@ async def get_all_games_by_release_date():
     # Try to get the games that have a name similar to the query
     try:
      
-        sql_query = "SELECT * FROM api.game_info ORDER BY TO_DATE(release_date, 'MM-DD-YYYY') ASC"
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
+                        FROM 
+                            api.game_info
+                        ORDER BY 
+                            TO_DATE(release_date, 'MM-DD-YYYY')
+                        ASC
+                        """
         result = await fetch_as_dict(conn,sql_query)
         
         # If no games are found, return an error message
@@ -45,7 +53,16 @@ async def get_game_by_release_date_by_year(year: str):
     # Try to get the games that have a name similar to the query
     try:
      
-        sql_query = " SELECT * FROM api.game_info WHERE EXTRACT(YEAR FROM TO_DATE(release_date, 'MM-DD-YYYY')) = $1 ORDER BY TO_DATE(release_date, 'MM-DD-YYYY') ASC" 
+        sql_query = """ SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
+                        FROM 
+                            api.game_info 
+                        WHERE 
+                            EXTRACT(YEAR FROM TO_DATE(release_date, 'MM-DD-YYYY')) = $1 
+                        ORDER BY 
+                            TO_DATE(release_date, 'MM-DD-YYYY') 
+                        ASC
+                        """
         result = await fetch_as_dict(conn,sql_query, year)
         
         # If no games are found, return an error message

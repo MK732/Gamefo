@@ -21,7 +21,16 @@ async def get_games_by_platforms(platform: str):
     # Try to get the games that have a name similar to the query
     try:
         
-        sql_query = "SELECT * FROM api.game_info WHERE $1 ILIKE ANY(platforms) order by game_title ASC"
+        sql_query = """SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
+                        FROM 
+                            api.game_info 
+                        WHERE 
+                            $1 ILIKE ANY(platforms) 
+                        ORDER BY 
+                            game_title 
+                        ASC
+                        """
         result = await fetch_as_dict(conn,sql_query, platform)
         
         # If no games are found, return an error message
