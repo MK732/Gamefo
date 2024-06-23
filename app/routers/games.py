@@ -24,7 +24,16 @@ async def get_game_many_by_query(game_title: str):
     # Try to get the games that have a name similar to the query
     
     try:
-        sql_query = "SELECT id, game_title, release_date, publisher, developer, genre, platforms FROM api.game_info WHERE game_title ILIKE $1 order by game_title ASC"
+        sql_query = """
+                        SELECT 
+                            id, game_title, release_date, publisher, developer, genre, platforms 
+                        FROM 
+                            api.game_info 
+                        WHERE 
+                            game_title ILIKE $1 
+                        ORDER BY game_title 
+                        ASC;
+                    """
         params = (search_query,)
         result = await fetch_as_dict(conn, sql_query, search_query)
         
