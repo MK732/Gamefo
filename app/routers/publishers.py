@@ -19,7 +19,17 @@ async def get_games_by_publisher():
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info GROUP BY publisher ORDER BY publisher ASC"
+        sql_query = """SELECT 
+                            publisher, ARRAY_AGG(game_title) 
+                        AS 
+                            games 
+                        FROM 
+                            api.game_info 
+                        GROUP BY 
+                            publisher 
+                        ORDER BY 
+                            publisher 
+                        ASC"""
         result = await fetch_as_dict(conn,sql_query)
             
         if not result:
@@ -44,7 +54,19 @@ async def get_games_by_publisher_name(name:str):
         raise HTTPException(status_code=500, detail="Connection to database failed!")
     
     try:
-        sql_query = "SELECT publisher, ARRAY_AGG(game_title) AS games FROM api.game_info where publisher ILIKE $1 GROUP BY publisher ORDER BY publisher ASC"
+        sql_query = """SELECT 
+                            publisher, ARRAY_AGG(game_title) 
+                        AS 
+                            games 
+                        FROM 
+                            api.game_info 
+                        WHERE 
+                            publisher ILIKE $1 
+                        GROUP BY 
+                            publisher 
+                        ORDER BY 
+                            publisher 
+                        ASC"""
         result = await fetch_as_dict(conn,sql_query, search_query)
         
         return result 
