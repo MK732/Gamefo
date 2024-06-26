@@ -8,7 +8,7 @@ from app.utils.fetch_as_dictionary import fetch_as_dict
 router = APIRouter()
 
 # GET request to get games "LIKE" user query
-@router.get("/games/v1/{game_name}", tags=["Games"], response_model=List[Game])
+@router.get("/games/v1/", tags=["Games"], response_model=List[Game])
 async def get_game_few_by_query(game_title: str):
     search_query = f"%{game_title}%"  
     # Connect to the database
@@ -49,7 +49,7 @@ async def get_game_few_by_query(game_title: str):
     finally:
       
         await conn.close()
-@router.get("/games/v2/{game_name}", tags=["Games"], response_model=List[Game])
+@router.get("/games/v2/", tags=["Games"], response_model=List[Game])
 async def get_game_many_by_query(game_title: str):
     search_query = f"%{game_title}%"  
     # Connect to the database
