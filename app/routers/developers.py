@@ -44,7 +44,7 @@ async def get_games_by_developers():
         
         await conn.close()
         
-@router.get("/developers/{name}", tags=["Developers"], response_model=List[Developer])
+@router.get("/developers/", tags=["Developers"], response_model=List[Developer])
 async def get_games_by_developers_name(name: str):
     search_query = f"%{name}%"
     
