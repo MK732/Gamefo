@@ -72,7 +72,8 @@ async def get_game_many_by_query(game_title: str):
                             api.game_info 
                         WHERE 
                             game_title ILIKE $1 
-                        ORDER BY game_title 
+                        ORDER BY 
+                            game_title 
                         ASC;
                     """
         params = (search_query,)
