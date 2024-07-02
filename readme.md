@@ -1,5 +1,9 @@
 # GameFo
 
+# Live Site
+
+https://www.gamefo.net/docs
+
 ## Introduction
 GameFo is an open-source API dedicated to video games, offering access to a comprehensive dataset that includes information on more than 14,000 video game titles.
 
