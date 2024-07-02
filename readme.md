@@ -1,6 +1,6 @@
 # GameFo
 
-# Live Site
+## Demo of GameFo
 
 https://www.gamefo.net/docs
 
