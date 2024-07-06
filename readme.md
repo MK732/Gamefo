@@ -46,7 +46,7 @@ Below is an overview of the files and directories in this project, excluding the
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Fulosophy/Gamefo.git
+   git clone https://github.com/MK732/Gamefo.git
    cd gamefo
 
 2. Create a virtual environment and activate it
