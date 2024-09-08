@@ -118,7 +118,7 @@ async def get_all_games():
         # If no games are found, return an error message
         if not result:
             raise HTTPException(status_code=404, detail="No Games Found!")
-        print(result)
+        
         return result
     
     # If an error occurs, return the error message

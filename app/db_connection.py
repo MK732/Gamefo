@@ -6,7 +6,7 @@ from psycopg2.extras import RealDictCursor
 from dotenv import load_dotenv
 import asyncpg
 
-load_dotenv(dotenv_path="/code/app/.env")
+load_dotenv(dotenv_path="../app/.env")
 # Function to connect to the database
 async def connect():
     
