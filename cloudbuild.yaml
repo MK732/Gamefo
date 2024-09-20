@@ -1,0 +1,7 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      ["build", "-t", "gcr.io/gamefo/github.com/mk732/gamefo:$COMMIT_SHA", "."]
+
+options:
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
