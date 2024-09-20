@@ -15,7 +15,7 @@ app = FastAPI(swagger_ui_parameters={"displayRequestDuration": True, "syntaxHigh
               )
 
 
-# Include the routers
+# Inlcude all the routers
 app.include_router(games.router)
 app.include_router(genres.router)
 app.include_router(publishers.router)
