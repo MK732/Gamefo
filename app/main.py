@@ -25,7 +25,7 @@ app.include_router(release_dates.router)
 
 # Root route
 @app.get("/",response_class=HTMLResponse)
-def all_routes():
+def home_route():
     return """
  <!DOCTYPE html>
 <html lang="en">
